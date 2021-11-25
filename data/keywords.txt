@@ -16,6 +16,7 @@ Johnson & Johnson
 Moderna
 Pfizer
 Sanofi
+Sinopharm
 vax
 vaxx
 vaxxed
