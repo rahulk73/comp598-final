@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 import tweepy, os
+import pandas as pd
 
 def setup():
     load_dotenv()
@@ -17,9 +18,13 @@ def main():
     
     # public_tweets = api.home_timeline()
     tweets = api.search_tweets(query,lang='en',count=20)
-    for tweet in tweets:
-        print(tweet.text)
+    tweet_text = [t.text for t in tweets]
+    
+    pd.Dataframe()
+        
+    
     
 if __name__ == '__main__':
     setup()
     main()
+    
