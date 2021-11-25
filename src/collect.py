@@ -16,7 +16,7 @@ def main():
     query = keywords.join(" OR ")
     
     # public_tweets = api.home_timeline()
-    tweets = api.search_tweets(query,lang='en',count=200)
+    tweets = api.search_tweets(query,lang='en',count=20)
     for tweet in tweets:
         print(tweet.text)
     
