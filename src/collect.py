@@ -29,17 +29,14 @@ def main():
     auth,keywords = setup()
     api = tweepy.API(auth, wait_on_rate_limit=True)
     query = (" OR ").join(keywords)
-    
-    tweet_data = dict()
-    while(len(tweet_data) < 1000):
-        print(len(tweet_data))
-        tweets = api.search_tweets(query,lang='en',count=100)
-        for t in tweets:
-            tweet_data[t.id] = t.text
-    
-    store_tweets(tweet_data.values(),DATA.joinpath('tweet_data.tsv'))
-        
-    
+    query+=" -filter:retweets"
+            
+    tweets = tweepy.Cursor(api.search_tweets, 
+                            q=query,
+                            lang='en',
+                            ).items(1000)
+    tweet_data = [t.text for t in tweets][:1000]
+    store_tweets(tweet_data,DATA.joinpath('tweet_data.tsv'))
     
 if __name__ == '__main__':
     setup()

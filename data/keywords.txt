@@ -12,7 +12,7 @@ immunity
 epidemic
 AstraZeneca
 BioNTech
-Johnson & Johnson
+"Johnson & Johnson"
 Moderna
 Pfizer
 Sanofi
