@@ -34,8 +34,8 @@ def main():
     tweets = tweepy.Cursor(api.search_tweets, 
                             q=query,
                             lang='en',
-                            ).items(1000)
-    tweet_data = [t.text for t in tweets][:1000]
+                            tweet_mode='extended').items(10)
+    tweet_data = [t.full_text for t in tweets][:10]
     store_tweets(tweet_data,DATA.joinpath('tweet_data.tsv'))
     
 if __name__ == '__main__':
