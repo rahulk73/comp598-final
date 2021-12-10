@@ -47,9 +47,9 @@ def best_tf_idf(categories,data,word_count):
                     num_categories += 1
             # Compute TF_IDF = IDF * TF
             idf = math.log(len(categories)/num_categories)
-            tf_idf[word] = idf * tf
+            tf_idf[word] = round(idf * tf,3)
         # Pick 10 highest values of tf_idf for each category
-        top_tf_idf[str(int(category))] = sorted(tf_idf.keys(),key=tf_idf.get,reverse=True)[:10]
+        top_tf_idf[str(int(category))] = {k: v for k, v in sorted(tf_idf.items(), key=lambda x: x[1], reverse=True)[:10]}
     return top_tf_idf
 
 # Outputs a 2D dictionary of {'category' : {'word' : num of occurences in category}} 
