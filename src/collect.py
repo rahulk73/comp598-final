@@ -34,9 +34,9 @@ def main():
     tweets = tweepy.Cursor(api.search_tweets, 
                             q=query,
                             lang='en',
-                            tweet_mode='extended').items(1000)
-    tweet_data = [t.full_text for t in tweets][:1000]
-    store_tweets(tweet_data,DATA.joinpath('tweet_data.tsv'))
+                            tweet_mode='extended').items(100)
+    tweet_data = [t.full_text for t in tweets][:40]
+    store_tweets(tweet_data,DATA.joinpath('tweet_data_additional.tsv'))
     
 if __name__ == '__main__':
     setup()

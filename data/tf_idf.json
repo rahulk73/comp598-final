@@ -1,25 +1,25 @@
 {
     "1": {
-        "vaccine": 18.294,
-        "vaxxed": 15.249,
+        "vaccine": 18.694,
+        "vaxxed": 15.942,
         "efficacy": 12.477,
         "heart": 11.09,
         "fda": 10.397,
+        "pfizer": 10.397,
         "people": 9.781,
         "save": 9.704,
-        "pfizer": 9.011,
-        "approved": 8.318,
-        "reduce": 8.318
+        "booster": 9.011,
+        "eligible": 8.318
     },
     "2": {
-        "omicron": 19.27,
+        "omicron": 20.68,
+        "mutations": 12.477,
         "variant": 11.784,
-        "mutations": 10.397,
         "detected": 6.238,
         "omicronvariant": 6.238,
         "southkorea": 6.238,
         "omicronvarient": 6.238,
-        "mild": 5.545,
+        "spike": 6.238,
         "korea": 5.545,
         "south": 4.159
     },
@@ -37,7 +37,7 @@
     },
     "4": {
         "republican": 16.636,
-        "political": 14.556,
+        "political": 16.636,
         "biden": 13.863,
         "trump": 12.477,
         "senate": 8.318,
@@ -54,34 +54,34 @@
         "cleveland": 4.159,
         "diabetes": 4.159,
         "myocarditis": 4.159,
+        "yearly": 4.159,
         "suppose": 2.773,
         "loss": 2.773,
-        "watt": 2.773,
-        "protocol": 2.773
+        "watt": 2.773
     },
     "6": {
-        "impact": 8.318,
         "analytics": 8.318,
         "normal": 6.931,
+        "impact": 6.931,
         "cruise": 6.931,
         "ship": 6.931,
         "orleans": 6.931,
         "visit": 6.238,
         "averaging": 6.238,
         "comply": 6.238,
-        "deaths": 5.17
+        "people": 5.178
     },
     "7": {
         "deserve": 49.907,
         "bts": 41.589,
         "vacation": 20.794,
-        "season": 20.794,
-        "rest": 20.68,
         "holidays": 19.408,
         "happy": 17.329,
         "content": 14.556,
         "throughout": 14.556,
-        "families": 12.751
+        "families": 12.751,
+        "rest": 12.658,
+        "forget": 12.477
     },
     "8": {
         "client": 6.238,
