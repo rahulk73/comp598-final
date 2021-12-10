@@ -23,13 +23,11 @@ def main():
     word_count = word_occurences(categories,data,stopwords)
     top_tf_idf = best_tf_idf(categories,data,word_count)
     
-    # If output file directory doesn't exist, create it
-    output_filename = parent_path + '/data/tf_idf.json'
-    os.makedirs(osp.dirname(output_filename),exist_ok=True)
-    
     # Write to output file
+    output_filename = parent_path + '/data/tf_idf.json'
     with open(output_filename, "w") as output_file:
-        json.dump(words,output_file,indent=4)
+        json.dump(top_tf_idf,output_file,indent=4)
+        
         
 # tf_idf(word,category,data) = tf(word,category) * idf(word,data)
 # tf(word,category) = num. of times word is used in category
@@ -51,7 +49,7 @@ def best_tf_idf(categories,data,word_count):
             idf = math.log(len(categories)/num_categories)
             tf_idf[word] = idf * tf
         # Pick 10 highest values of tf_idf for each category
-        top_tf_idf[category] = sorted(tf_idf.keys(),key=tf_idf.get,reverse=True)[:10]
+        top_tf_idf[str(int(category))] = sorted(tf_idf.keys(),key=tf_idf.get,reverse=True)[:10]
     return top_tf_idf
 
 # Outputs a 2D dictionary of {'category' : {'word' : num of occurences in category}} 
@@ -79,6 +77,8 @@ def word_occurences(categories,data,stopwords):
                     word_byCat[w] += 1
                 else:
                     word_byCat[w] = 1
-        word_count[category] = word_byCat
-        
+        word_count[category] = word_byCat    
     return word_count
+
+if __name__ == '__main__':
+    main()
