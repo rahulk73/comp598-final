@@ -192,12 +192,11 @@ From these keywords, 1000 different Tweets were collected on December 6th, 2021.
 
 % 0.5 page. Explanation and justification for what you did. Focus on the design decisions you made NOT listed in this document that impacted your results.
 
-
-Our textual analysis is based on the semantic meaning of words used in the Tweets. We therefore filtered out common English words (also called stopwords) from our database by removing all words in the list available at this \href{https://github.com/igorbrigadir/stopwords/blob/master/en/onix.txt}{link}. 
+Our textual analysis is based on the semantic meaning of words used in the Tweets. We therefore filtered out common English words (also called stopwords) from our database by removing all words in the list made available by Onix \& Lextek \cite{BrigadirRepo}. 
 
 % Sentiment annotation: why we defined sentiment towards sanitary measures
 
-We constructed the dataset using a scraping script that primarily made use of the Tweepy Python library. We used a Twitter Developer account to authenticate within the Twitter API through Tweepy in order to gather a large amount of Tweets. As we are analyzing discussions related to COVID-19 on social media, we queried the Twipper Api by filtering for Tweets in the English languages and filtered out tweets that didn't contain a least one of our 27 keywords related to COVID-19. We also decided to filter out retweets as we wanted our dataset to consist of a set of unique Tweets. 
+We constructed the dataset using a scraping script that primarily made use of the Tweepy Python library \cite{roesslein2020tweepy}. We used a Twitter Developer account to authenticate within the Twitter API through Tweepy in order to gather a large amount of Tweets. As we are analyzing discussions related to COVID-19 on social media, we queried the Twipper Api by filtering for Tweets in the English languages and filtered out tweets that didn't contain a least one of our 27 keywords related to COVID-19. We also decided to filter out retweets as we wanted our dataset to consist of a set of unique Tweets. 
 
 However, our dataset does contain Tweet replies because it was only after we had finished the annotation process that it was mentioned on the discussion board not to include replies in our data. We still think including replies is relevant to our analysis as replies represent perfectly the nature of a discussion on social media. Incorporating them is a way to produce data that is representative of the debate on COVID-19 sanitary measures currently taking place on Twitter.  
 
@@ -212,7 +211,7 @@ To solve this problem, we evaluated the sentiment of the user only in relation t
 
 [OTHER DESIGN OPTIONS?]
 
-We decided to convert hashtags to words, as they more often than not carry meaning that is helpful in perceiving the Twitter user's stance. Indeed, hashtags are used as compact representations of the principal subject of each Tweet. We were aware that including these hashtags could create biases by artificially inflating the frequency of certain words. 
+We decided to convert hashtags to words, as they more often than not carry meaning that is helpful in perceiving the Twitter user's stance. Indeed, hashtags are used as compact representations of the principal subject of each Tweet. We were aware that including these hashtags could create biases by artificially inflating the frequency of certain words, but we chose to include them nonetheless. 
 
 \section{Results}
 
@@ -243,18 +242,9 @@ Our goal was to find between 3 and 8 topics that would be able to represent each
 
 %Topics validity: Are the topics appropriate to the task? Are they well-defined? Are they defined to minimize subjectivity?
 
-The typology used for topics annotation as described above is comprehensive, because
+The typology used for topics annotation as described above is comprehensive, because all tweets fit in at least one topic definition. Indeed, during our data scraping, we removed any aberrant data which allowed us to develop a very precise but general subset of categories which represent not only our dataset but the general landscape of the COVID-19 pandemic. Furthermore, removing this aberrant data allowed us to create definitions for our topics that are well-defined and concise. We also combined any relevant categories that overlapped to achieve this generalization and to ensure our typology was as objective as possible. Thus, our typology is designed to minimize the subjectivity of the annotators. This tedious process ensured that the annotation process would be much easier for our annotators and that their annotation would mirror the true underlying distribution of our topics.
 
-Moreover, the topics typology is well-defined, because 
-
-Finally, the typology is designed to minimize the subjectivity of the annotators, because 
-
-
-% Does the annotation process give us confidence in the quality of the annotations?
-
-% Are all results requested present? Do the results make sense? Are outliers or unusual trends appropriately explained?
-
-[INTRODUCE TABLE]
+We started by analyzing our dataset by taking a look at how it was split. The figures for these splits can be found in table 2. We also computed the unweighted average sentiment for each subset of tweets relating to a respective topic. These values can also be found in table 2.
 
 \begin{table}[htb]
     \caption{Tweet sentiment towards COVID-19 sanitary measures for each topic.}
@@ -263,22 +253,32 @@ Finally, the typology is designed to minimize the subjectivity of the annotators
  \hline
  Topic & Negative & Neutral & Positive & Total & Average sentiment \\
  \hline 
-1 & 92 & 78 & 92 & 262 & 0\\
-2 & 11 & 32 & 6 & 49 & -0.102\\
-3 & 28 & 54 & 38 & 120 & 0.083\\
-4 & 42 & 84 & 37 & 163 & -0.031\\
+1 & 92 & 79 & 92 & 263 & 0\\
+2 & 11 & 33 & 6 & 50 & -0.100\\
+3 & 28 & 54 & 39 & 121 & 0.09\\
+4 & 43 & 84 & 37 & 164 & -0.037\\
 5 & 8 & 27 & 12 & 47 & 0.085\\
-6 & 20 & 78 & 24 & 122 & 0.033\\
+6 & 20 & 79 & 24 & 123 & 0.033\\
 7 & 17 & 150 & 65 & 232 & 0.207\\
  \hline
 \end{tabular}
 \end{table}
 
-[Discuss repartition of the tweets, and the sentiment]
+In order to further our analysis of dataset, we create a python script which computes the term frequency–inverse document frequency (TF-IDF) to determine the top 10 most important words for each of the topics. This script also preprocessed the tweets by removing stop words, non-alphabetical words, punctuation and external links (i.e. urls). We used the whole dataset to compute the inverse document frequency across the different topics and used the subset of tweets for each topic to compute the term frequencies. The top 10 words with highest TF-IDF score for each topic can be found in Table 3 in descending order. 
 
-Now each of these topics allowed us to capture one of the important aspects of the COVID-19 pandemic. The most relevant and popular subject was vaccination. Indeed, it was the most present topic in our dataset with 26\% of the total tweets. The sentiment regarding vaccination was dispersed very evenly. The positive and negative class both represented 35\% of the vaccination tweets and the neutral class represented 30\% of the tweets. 
+Now each of these topics allowed us to capture one of the important aspects of the COVID-19 pandemic. The most relevant and popular subject was vaccination. Indeed, it was the most present topic in our dataset with 26.3\% of the total tweets. The sentiment regarding vaccination was dispersed very evenly with an average sentiment of exactly 0. The positive and negative class both represented 35\% of the vaccination tweets and the neutral class represented 30\% of the tweets.
 
+COVID-19 variants was the second topic we decided upon during our open coding. This topic allowed us to cover any discussions related to the new Covid variant Omicron and the Delta variant which are prevalent in the news at the moment. The variant tweets constituted 5\% of the total tweets and had an average sentiment of -0.1. The negative class represented 22\% of the total variant tweets, the positive class presented 12\% and the neutral class 66\% of the variant tweets. Thus, most of the tweets regarding variants were neutral.
 
+Sanitary measures was the third topic we chose as it allowed us to cover any conversations related to restrictions put in place due to the pandemic. It encompassed 12.1\% of the total tweets and had an average sentiment of 0.09. The neutral class represented the majority of the tweets with a share of 45\%. The positive and negative classes both had a similar share of the tweets with respectively 32\% and 23\% of the total count for this topic.
+
+Now politics and economy allowed us to capture any discussions related to the effects of the COVID-19 pandemic on the global and local political and economic landscapes. These tweets represented 16.4\% of the total tweets and had an average sentiment of -0.033. Once again the neutral class constituted the majority of the tweets with 51\% of the total. The positive and negative class represented respectively 23\% and 26\% of the total share of politics and economy tweets.
+
+COVID-19 testing and symptoms are other major aspects of the pandemic and, consequently, we decided to merge them together to as a topic, since the appearance of symptoms is directly correlated with testing for the virus. Thus, this topic was the least present in our dataset with a share of 4.7\% of the total tweets and an average sentiment of 0.085. Once gain most of the tweets related to this topic were neutral. Indeed, the neutral class represented 57\% of the total tweets, the negative class represented 17\% of the tweets and the positive class 26\% of the tweets. 
+
+We chose the pandemic topic to represent the factual information related to COVID-19 and  the discussions related to statistics about the effect of the spread of COVID-19 on the globe. This topic constituted 12.3\% of the global total tweets and had an average sentiment of 0.033. The sentiment of the tweets was mostly neutral with 64\% of the tweets being neutral and only 20\% and 16\% of the tweets being positive and negative respectively.
+
+Finally, the last topic we decided upon after conducting the open coding was entertainment and community. The COVID-19 pandemic completely changed every person's everyday life, had a major effect on the major sports league and revolutionized the entertainment industry. Thus, we created this topic to encompass these drastic changes and the discussions on social media that surrounded them. This topic was the second most present in our dataset with a share of 23.2\% of the total tweets and an average sentiment of 0.207. 64\% of the tweets were neutral, followed by 29\% of them being positive and only 7\% of them having a negative sentiment.
 \begin{table*}[ht]
 \centering
 \caption{10 words with highest TF-IDF score for each topic}
@@ -287,32 +287,21 @@ Now each of these topics allowed us to capture one of the important aspects of t
  \hline
  Topic 1 & Topic 2 & Topic 3 & Topic 4 & Topic 5 & Topic 6 & Topic 7\\
  \hline 
-vaccine & omicron & passport & republican & vitamin & impact & deserve\\
-vaxxed & variant & restrictions & political & margolin & analytics & bts\\
-efficacy & mutations & sir & biden & swab & normal & vacation\\
-heart & detected & plane & trump & cleveland & cruise & season\\
-fda & omicronvariant & conservative & senate & diabetes & ship & rest\\
-people & southkorea & mandatory & republicans & myocarditis & orleans & holidays\\
-save & omicronvarient & lockdowns & businesses & suppose & visit & happy\\
-pfizer & mild & role & stocks & loss & averaging & content\\
-approved & korea & people & ready & watt & comply & throughout\\
-reduce & south & vaccination & democrats & protocol & deaths & families\\
+vaccine & omicron & passport & republican & vitamin & covid & deserve\\
+vaxxed & mutations & restrictions & political & covid & analytics & bts\\
+effective & variant & quarantine & biden & margolin & normal & happy\\
+efficacy & detected & covid & trump & recovery & impact & vacation\\
+heart & omicronvariant & sir & covid & swab & cruise & holidays\\
+save & southkorea & plane & senate & cleveland & ship & content\\
+fda & omicronvarient & conservative & republicans & diabetes & orleans & throughout\\
+pfizer & spike & mandatory & businesses & myocarditis & visit & music\\
+people & korea & lockdowns & stocks & yearly & averaging & families\\
+yeah & south & role & ready & symptoms & comply & rest\\
  \hline
 \end{tabular}
 \end{table*}
 
-
-[TOPIC CHARACTERIZATION (?)]
-
-
-% Topic engagement: 
-
-[TOPIC ENGAGEMENT]
-
-% ADD EXPLANATIONS INTRODUCING TABLE
-
-
-In order to further our analysis of dataset, we create a python script which computes the term frequency–inverse document frequency (TF-IDF) to determine the top 10 most important words for each of the topics. This script also preprocessed the tweets by removing stop words, non-alphabetical words, punctuation and external links (i.e. urls). We used the whole dataset to compute the inverse document frequency across the different topics and used the subset of tweets for each topic to compute the term frequencies. The top 10 words with highest TF-IDF score for each topic can be found in Table 2. 
+These results are representative of our expectations. Indeed, Twitter is a social media platform so it was to be expected that a lot of discussions would be related to communities and entertainment. Furthermore, vaccination is one of the most controversial subjects at the moment which explains that it is the topic the most represented in the dataset. Now the major presence of neutral tweets in some topics can be explained by the nature of the topic. Indeed, these topics such as pandemic, symptoms and testing, politics and economy and entertainment and community have a much more factual aspect to them. Tweets related to these topics were often updates about current events and thus, didn't take any position towards their respective topic. Finally, the large disparity in positive versus negative sentiment in the entertainment and community topic is due to the presence of tweets such as fans encouraging sports organizations or thanking artists for their work during the pandemic.
 
 \section{Discussion}
 
@@ -320,9 +309,31 @@ In order to further our analysis of dataset, we create a python script which com
 
 % Are insightful candidate-level interpretations provided? Are these grounded in results? Do the findings integrate results and prior knowledge in a sound, well-reasoned way?
 
-[RESULTS INTERPRETATION]
+As described in the results section, some topics had a much larger share of the total tweets than others. Indeed, the vaccination and entertainment and community were clear leaders in total tweets and almost represent half the tweets in the dataset with 49.5\% of the total share. This was to be expected as vaccination is the most controversial aspect of the COVID-19 pandemic and as social media users will use twitter to discuss the effects of the pandemic on their community and to discuss different aspects of the entertainment industry. 
 
-[WEAKNESSES \& BIASES]
+Now three topics were in the middle of the pact: sanitary measures, politics and economy and pandemic. Sanitary measures and pandemic both represented 12.1\% and 12.3\% of the dataset respectively and politics and economy tweets represented 16.4\% of it. Thus, we can infer that these topics were relevant but not the most discussed at the time of the scraping. A reason behind this may be that these topics are more local than global. Indeed, these three topics characterize aspects of the COVID-19 pandemic that are more regional issues than global issues. A smaller subset of twitter users would then interact with them which consequently lowers their representation on the platform. 
+
+Two topics were much less present in the dataset: variant and symptoms and testing. Both of these topics respectively represented less than or equal to 5\% of the dataset. These topics are thus clearly less prelevant on social media. In the case of the variant topic,  a major reason may be the very recent discovery of the Omicron variant and the containment of the Delta variant which may have lead to lesser representation of variants in the news and on social media. Consequently, due to the spontaenous and short nature of tweets, twitter users may have a smaller tendency to discuss them. In the case of the symptoms and testing topic, COVID-19 testing and symptoms are factual subjects that are extremely well documented online. Thus it is very easy to get access to information regarding them which may have lead to less people discussing them on social media.
+
+Now the overall sentiment distribution of the tweets in the dataset is the following: 21.9\% negative, 50.6\% neutral and 27.5\% positive. This clearly shows that most tweets are factual, no matter the topic. A major reason behind this may be the short and concise nature of tweets which allows for information to be divulged to the large masses very rapidly. Consequently, tweets may often have been used to give updates on the current situation related to each one of the topics. 
+
+For the vaccination topic, the distribution of the sentiment was very equal. Indeed, the proportion of tweets with negative sentiment is identical to the proportion of tweets with positive sentiment. Consequently, this gave an average sentiment of 0 which demonstrates that there were as many people for and against vaccination. The top words for this topic were all words related to vaccines, their efficacy, the companies creating them and regulating them. The word heart was also present. We can thus interpret that the discussions related to vaccination on Twitter were mainly about the efficacy of the vaccines and their side-effects such as heart diseases. 
+
+The variant topic had an average sentiment of -0.1 which indicates a very slight negativity towards variants in twitter discussions. The top word for the topic is evidently omicron as this is most recent COVID-19 variant to emerge. Also, 3 words in the top 10 of topic 2 are directly related to South Korea. Thus, we can interpret that the discussions on twitter concerning variants have mostly been about the emergence of the Omicron variant in South Korea and the world. Combined with the slight negative average sentiment, we could interpret these discussions as fear towards a global spike in Omicron cases. 
+
+On the other hand, the sanitary measures topic had an average sentiment of 0.09 which indicates a slight positivity towards the sanitary measures. The top 10 words with highest TF-IDF score are mostly related to the general restrictions put in place such as quarantine, restrictions, lockdowns. The presence of words such as passport and plane may indicate discussions related to COVID travel passports. Furthermore, combining the slight positivity indicated by the average sentiment with the top words, we can interpret that the discussions on twitter related to the sanitary measures may have been in slight favor of the restrictions put in place to slow down the spread of COVID-19.
+
+Now the politics and economy topic had an average sentiment value of -0.037 which is negligible. The top 10 words with highest TF-IDF scores were all mostly related to American politics except for the words stocks and businesses. These two words combined with top words such as Trump, Biden, covid, senate hint that the discussions on twitter have been mainly about the handling of the covid epidemic in the United States and its effects on the economy. This may be due to the importance of the United States in the global economy and political landscape and also due to the fact that Twitter has a large part of its user base in the United States. 
+
+The symptoms and testing topic had an average sentiment value of 0.085 which indicates a slight positive sentiment in the tweets related to symptoms and testing. The top words with highest TF-IDF score were related to possible remedies to the symptoms of COVID-19 such as the word vitamin and testing equipment such as swabs. The word margolin was also present which indicates the possibility of discussions about the new study lead by Dr. Leon Margolin on a possible over the counter COVID-19 treatment. The word myocarditis was also present which may indicate discussions about the long-term effects of COVID-19. In general, the overall neutral sentiment and top words for this topic indicate that discussions on Twitter revolved around the recovery steps of COVID-19 and side-effects after recovering from the virus.
+
+Now the pandemic topic had an average sentiment value of 0.033 with is negligible. This does not come as a surprise as this topic mainly focused on facts and statistics which are two subject who mostly involve a neutral sentiment. The top 10 words for this topic varied a lot. Indeed, some words related to the progress of the pandemic such as normal, impact and averaging were present, but other words such as Orleans, visit, cruise and ship are also in the top 10. The presence of the words cruise, ship, Orleans seems to indicate possible discussions related to statistics related to the spread of COVID-19 on cruise ships which has been a controversial subject in the past year. Thus combining this assumption with the other words, we can interpret the discussions of the pandemic topic to mainly focus on statistics related to the most recent spread COVID-19 outbreaks.
+
+Finally, the entertainment and community topic had a an average sentiment of 0.207 which is the largest average sentiment value within the topics. This positive average value is mostly due to the presence of tweets from fans encouraging their sports team or favorite musical artist. Indeed, this is shown in the top 10 words by TF-IDF score as the second most highest score goes to the word bts which is the name of a Korean band. Furthermore, after analyzing the dataset, most of the other words in the top 10 can be found in these tweets about BTS in which fans thank the band for entertaining them during the pandemic and wish them a happy vacation with their families. Also, word such as holidays and rest may be related to the start of the month of December and thus an indicator that twitter users are wishing each other happy holidays. Consequently, we can interpret the discussions about this topic to be mostly related to fans thanking their favorite musical artist, fans and people looking forward to the holidays.
+
+Now our analysis is unfortunately not bulletproof. Indeed, a major weakness is the use of single annotation instead of double annotation. Unfortunately, due to time constraints, we were not able to perform double annotation which may lead to bias being present in our annotations. Another weakness is our inclusion of replies in our analysis. This could lead to major bias in the true underlying distribution of our topics in our dataset as some one our tweets may not be unique. Furthermore, this may be the exact reason why we have so many tweets about the Korean pop band BTS in our dataset. Our dataset size does not help reduce this bias either. This weakness is demonstrated by the top words by TF-IDF score for topic 7 being completely biased towards tweets involving BTS as the fans used similar language when tweeting.
+
+Nevertheless, possible improvements we could integrate in the future to reduce these weaknesses could evidently be to use double annotation and also exclude replies from our parsing script. Furthermore, we could also gather a larger dataset which could help reduce the biases present in our data as the underlying distribution would converge to the true distribution according to the Law of Large Numbers. Finally, one aspect that would improve immensely that quality of this analysis is the use of deep learning algorithms. Indeed, we could train a simple bag of words model and transfer learning to then determine which key words would fit best for our query
 
 [POSSIBLE IMPROVEMENTS]
 
@@ -336,10 +347,10 @@ The workload was distributed among the three team members. Their respective cont
 
 \  \textbf{Rahul Kumar}: Wrote the data scraping for Twitter with Antoine. Annotated a third of the data. Wrote the final report sections:  
 
-\  \textbf{Fabrizzio Sabelli}: Annotated a third of the data. Wrote the final report sections: Results, Discussion, Methods, Introduction  
+\  \textbf{Fabrizzio Sabelli}: Annotated a third of the data. Wrote the final report sections: Results, Discussion, Methods.
   
   
 %\section{References}
-
+\bibliography{refs}{}
 \end{document}
 
