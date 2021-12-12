@@ -59,7 +59,36 @@ fabrizzio.sabelli@mail.mcgill.ca}
 boop
 
 \section{Data}
-boop
+\noindent The below list of 27 COVID-19 related keywords was written to collect Tweets containing at least one such keyword. This list contains multiple derivations of the COVID-19 name, principal vaccine manufacturers, as well as words related to the pandemic and sanitary measures. 
+
+%\hspace*{-\sectionwidth}
+\makebox[0pt][l]{\begin{tabular}[t]{ @{} l }
+  COVID \\ COVID-19 \\ COVID19 \\ coronavirus \\ pandemic \\ quarantine \\ screening \\ distancing \\immunity \\immunization
+\end{tabular}}\hfill
+\begin{tabular}[t]{ l }
+  symptoms \\ symptomatic \\ epidemic \\ vax \\ vaxx \\ vaxxed \\ vaccine \\ vaccination \\injection \\ dose 
+\end{tabular}\hfill
+\makebox[0pt][r]{\begin{tabular}[t]{ l @{} }
+  AstraZeneca \\ BioNTech \\ Johnson \& Johnson \\ Moderna \\ Pfizer \\ Sanofi \\ Sinopharm
+\end{tabular}}
+
+
+\noindent From these keywords, 1000 different Tweets were collected on December 6th, 2021. This dataset was then annotated manually by the team. Each Tweet was first given a topic among the list: 
+\begin{enumerate}
+    \item \textbf{Vaccination}: includes discussion on vaccine manufacturers and vaccination mandates.
+    \item \textbf{Variant}: includes discussion around new variants (e.g. Omicron) and their effect on governmental measures.  
+    \item \textbf{Sanitary measures}: includes discussion on all governmental sanitary measures like lockdown, quarantining, social restrictions and masks. 
+    \item \textbf{Politics and economy}: includes discussion on politics around the world related to COVID-19, as well as the jobs market and economic repercussions of the pandemic.
+    \item \textbf{Symptoms and Testing}: includes discussion on COVID-19 symptoms and PCR testing.
+    \item \textbf{Pandemic}: includes discussion on new cases, outbreaks, deaths. 
+    \item \textbf{Entertainment and Community}: includes discussion around the effect of the pandemic on entertainment, sports and the social community at large. 
+    \item \textbf{Unrelated}: all Tweets unrelated to COVID-19 that were picked up by accident. 
+\end{enumerate}
+
+\noindent During the annotation process, we realized that a few Tweets (approximately 2\%) had been incorrectly picked up by a keyword and were unrelated to the COVID-19 pandemic. In order to exclude this faulty data, we created an extra category of unrelated Tweets. 
+
+
+\noindent We also realized that evaluating the sentiment of a Twitter user leads to various ambiguities. For example, a Tweet might be phrased very negatively in opposition to anti-vaccine supporters. In this case, the Tweet would have a negative sentiment, but it would express a positive position towards vaccination. To solve this problem, we evaluated the sentiment of the user only in relation to its approval or disapproval of sanitary measures and vaccination. A value of -1 was given to users expressing disagreement over sanitary measures (e.g. lockdowns, vaccination, masks, quarantining). A value of +1 was given to users agreeing with the implementation of these measures. Finally, a value of 0 was given to Tweets which were either unrelated to COVID-19, or were completely factual (originating from news articles like case counts) or which lacked a definite position on the subject. 
 
 \section{Methods}
 boop
