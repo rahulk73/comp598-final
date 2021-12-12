@@ -1,15 +1,15 @@
 {
     "1": {
-        "vaccine": 18.694,
+        "vaccine": 40.275,
         "vaxxed": 15.942,
+        "effective": 12.477,
         "efficacy": 12.477,
         "heart": 11.09,
         "fda": 10.397,
         "pfizer": 10.397,
         "people": 9.781,
-        "save": 9.704,
-        "booster": 9.011,
-        "eligible": 8.318
+        "yeah": 9.704,
+        "shot": 9.704
     },
     "2": {
         "omicron": 20.68,
@@ -26,40 +26,41 @@
     "3": {
         "passport": 12.477,
         "restrictions": 7.847,
+        "quarantine": 7.05,
+        "covid": 6.81,
         "sir": 6.238,
         "plane": 6.238,
         "conservative": 6.238,
         "mandatory": 6.238,
         "lockdowns": 6.238,
-        "role": 6.238,
-        "people": 5.754,
-        "vaccination": 5.64
+        "role": 6.238
     },
     "4": {
         "republican": 16.636,
         "political": 16.636,
         "biden": 13.863,
         "trump": 12.477,
+        "covid": 9.881,
         "senate": 8.318,
         "republicans": 8.318,
         "businesses": 8.318,
         "stocks": 8.318,
-        "ready": 8.318,
-        "democrats": 6.931
+        "ready": 8.318
     },
     "5": {
         "vitamin": 6.238,
+        "covid": 4.807,
         "margolin": 4.159,
+        "recovery": 4.159,
         "swab": 4.159,
         "cleveland": 4.159,
         "diabetes": 4.159,
         "myocarditis": 4.159,
         "yearly": 4.159,
-        "suppose": 2.773,
-        "loss": 2.773,
-        "watt": 2.773
+        "symptoms": 2.82
     },
     "6": {
+        "covid": 8.412,
         "analytics": 8.318,
         "normal": 6.931,
         "impact": 6.931,
@@ -68,31 +69,19 @@
         "orleans": 6.931,
         "visit": 6.238,
         "averaging": 6.238,
-        "comply": 6.238,
-        "people": 5.178
+        "comply": 6.238
     },
     "7": {
         "deserve": 49.907,
         "bts": 41.589,
+        "happy": 24.521,
         "vacation": 20.794,
         "holidays": 19.408,
-        "happy": 17.329,
         "content": 14.556,
         "throughout": 14.556,
+        "music": 13.863,
         "families": 12.751,
-        "rest": 12.658,
-        "forget": 12.477
+        "rest": 12.658
     },
-    "8": {
-        "client": 6.238,
-        "rabies": 6.238,
-        "growth": 6.238,
-        "character": 6.238,
-        "signs": 6.238,
-        "adhd": 6.238,
-        "beast": 4.159,
-        "telehealth": 4.159,
-        "cool": 4.159,
-        "screening": 2.82
-    }
+    "8": {}
 }
