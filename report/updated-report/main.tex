@@ -1,0 +1,345 @@
+\def\year{2022}\relax
+%File: formatting-instructions-latex-2022.tex
+%release 2022.1
+\documentclass[letterpaper]{article} % DO NOT CHANGE THIS
+\usepackage{aaai22}  % DO NOT CHANGE THIS
+\usepackage{times}  % DO NOT CHANGE THIS
+\usepackage{helvet}  % DO NOT CHANGE THIS
+\usepackage{courier}  % DO NOT CHANGE THIS
+\usepackage[hyphens]{url}  % DO NOT CHANGE THIS
+\usepackage{graphicx} % DO NOT CHANGE THIS
+\urlstyle{rm} % DO NOT CHANGE THIS
+\def\UrlFont{\rm}  % DO NOT CHANGE THIS
+\usepackage{natbib}  % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\usepackage{caption} % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\DeclareCaptionStyle{ruled}{labelfont=normalfont,labelsep=colon,strut=off} % DO NOT CHANGE THIS
+\frenchspacing  % DO NOT CHANGE THIS
+\setlength{\pdfpagewidth}{8.5in}  % DO NOT CHANGE THIS
+\setlength{\pdfpageheight}{11in}  % DO NOT CHANGE THIS
+\usepackage{multirow}
+\usepackage{array}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\setlength{\extrarowheight}{4pt}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+%
+% These are recommended to typeset algorithms but not required. See the subsubsection on algorithms. Remove them if you don't have algorithms in your paper.
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+%
+% These are are recommended to typeset listings but not required. See the subsubsection on listing. Remove this block if you don't have listings in your paper.
+\usepackage{newfloat}
+\usepackage{listings}
+\setlength{\parskip}{1em}
+\lstset{%
+	basicstyle={\footnotesize\ttfamily},% footnotesize acceptable for monospace
+	numbers=left,numberstyle=\footnotesize,xleftmargin=2em,% show line numbers, remove this entire line if you don't want the numbers.
+	aboveskip=0pt,belowskip=0pt,%
+	showstringspaces=false,tabsize=2,breaklines=true}
+\floatstyle{ruled}
+\newfloat{listing}{tb}{lst}{}
+\floatname{listing}{Listing}
+%
+%\nocopyright
+%
+% PDF Info Is REQUIRED.
+% For /Title, write your title in Mixed Case.
+% Don't use accents or commands. Retain the parentheses.
+% For /Author, add all authors within the parentheses,
+% separated by commas. No accents, special characters
+% or commands are allowed.
+% Keep the /TemplateVersion tag as is
+\pdfinfo{
+/Title (AAAI Press Formatting Instructions for Authors Using LaTeX -- A Guide)
+/Author (AAAI Press Staff, Pater Patel Schneider, Sunil Issar, J. Scott Penberthy, George Ferguson, Hans Guesgen, Francisco Cruz, Marc Pujol-Gonzalez)
+/TemplateVersion (2022.1)
+}
+
+\usepackage{blindtext}
+
+% DISALLOWED PACKAGES
+% \usepackage{authblk} -- This package is specifically forbidden
+% \usepackage{balance} -- This package is specifically forbidden
+% \usepackage{color (if used in text)
+% \usepackage{CJK} -- This package is specifically forbidden
+% \usepackage{float} -- This package is specifically forbidden
+% \usepackage{flushend} -- This package is specifically forbidden
+% \usepackage{fontenc} -- This package is specifically forbidden
+% \usepackage{fullpage} -- This package is specifically forbidden
+% \usepackage{geometry} -- This package is specifically forbidden
+% \usepackage{grffile} -- This package is specifically forbidden
+% \usepackage{hyperref} -- This package is specifically forbidden
+% \usepackage{navigator} -- This package is specifically forbidden
+% (or any other package that embeds links such as navigator or hyperref)
+% \indentfirst} -- This package is specifically forbidden
+% \layout} -- This package is specifically forbidden
+% \multicol} -- This package is specifically forbidden
+% \nameref} -- This package is specifically forbidden
+% \usepackage{savetrees} -- This package is specifically forbidden
+% \usepackage{setspace} -- This package is specifically forbidden
+% \usepackage{stfloats} -- This package is specifically forbidden
+% \usepackage{tabu} -- This package is specifically forbidden
+% \usepackage{titlesec} -- This package is specifically forbidden
+% \usepackage{tocbibind} -- This package is specifically forbidden
+% \usepackage{ulem} -- This package is specifically forbidden
+% \usepackage{wrapfig} -- This package is specifically forbidden
+% DISALLOWED COMMANDS
+% \nocopyright -- Your paper will not be published if you use this command
+% \addtolength -- This command may not be used
+% \balance -- This command may not be used
+% \baselinestretch -- Your paper will not be published if you use this command
+% \clearpage -- No page breaks of any kind may be used for the final version of your paper
+% \columnsep -- This command may not be used
+% \newpage -- No page breaks of any kind may be used for the final version of your paper
+% \pagebreak -- No page breaks of any kind may be used for the final version of your paperr
+% \pagestyle -- This command may not be used
+% \tiny -- This is not an acceptable font size.
+% \vspace{- -- No negative value may be used in proximity of a caption, figure, table, section, subsection, subsubsection, or reference
+% \vskip{- -- No negative value may be used to alter spacing above or below a caption, figure, table, section, subsection, subsubsection, or reference
+
+\setcounter{secnumdepth}{0} %May be changed to 1 or 2 if section numbers are desired.
+
+% The file aaai22.sty is the style file for AAAI Press
+% proceedings, working notes, and technical reports.
+%
+
+% Title
+
+% Your title must be in mixed case, not sentence case.
+% That means all verbs (including short verbs like be, is, using,and go),
+% nouns, adverbs, adjectives should be capitalized, including both words in hyphenated terms, while
+% articles, conjunctions, and prepositions are lower case unless they
+% directly follow a colon or long dash
+\title{COVID-19 on Twitter: Heated Discussions}
+\author{  \\Antoine Bonnet, \\
+antoine.bonnet@mail.mcgill.ca,
+\\[3ex]
+Rahul Kumar,\\
+rahul.kumar2@mail.mcgill.ca, 
+\\[3ex]
+Fabrizzio Sabelli,\\
+fabrizzio.sabelli@mail.mcgill.ca\vspace{0.5cm} }
+
+% REMOVE THIS: bibentry
+% This is only needed to show inline citations in the guidelines document. You should not need it and can safely delete it.
+%\usepackage{bibentry}
+% END REMOVE bibentry
+
+\begin{document}
+
+% The report must be between 5 and 7 pages in length, not including references. Figures are encouraged – but should be used to maximum effect (fluffy or otherwise unnecessary images that do not make strong contributions to the report will lead to point deductions).
+
+
+\maketitle
+
+\section{Introduction}
+
+% 0.5 page. General overview and key findings
+
+% Do this last
+
+% 1. Goal
+
+The objective of this project was to analyze COVID-19 related Twitter discussions to uncover general trends in sentiment towards sanitary measures and vaccination in English-speaking countries. 
+
+% 2. Methods used for attaining goal
+
+To attain this goal, 1000 Tweets linked with the pandemic were collected from Twitter using appropriate filters. By open coding, 7 topics of discussions were identified in relation to the COVID-19 pandemic. Each Tweet was then annotated manually to identify its most salient topic, and its position towards the sanitary measures imposed by the government for the pandemic (including quarantine and vaccination) was evaluated. 
+
+After the annotation process, textual analysis was performed on Tweets grouped by each category. The most recurrent words pertaining to each topic were identified using the textual-frequency inverse-document-frequency (TF-IDF) metric. Other statistics pertaining to the distribution of sentiment across topics were also calculated. 
+
+% 3. Results and findings
+
+[SUMMARY OF FINDINGS/RESULTS]
+
+\section{Data}
+
+% 0.5 page. Describe your dataset. This should include statistics relevant to the project – the number of tweets you originally started with, the keywords used to collect tweets, and any design decisions you had to make around the filtering of this content.
+
+% Was the dataset prepared correctly? Did it have baseline characteristics that would allow this study to deliver meaningful insights?
+
+% Keywords used to collect tweets
+
+A list of 27 keywords related to COVID-19 was constructed in order to collect Tweets containing at least one keyword. This list contains multiple derivations of the COVID-19 name, principal vaccine manufacturers, as well as words related to the pandemic and sanitary measures: 
+
+\vspace{0.1cm}
+
+\begin{table}[htb]
+\caption{COVID-19 related keywords used for Twitter data collection.}
+  \centering
+\begin{tabular}{|M{2cm}|M{2cm}|M{2.8cm}| }
+ \hline 
+ COVID & immunization & injection\\
+ COVID-19 & symptoms & dose\\
+ COVID19 & symptomatic & AstraZeneca\\
+ coronavirus & epidemic & BioNTech\\
+ pandemic & vax & Johnson \& Johnson\\
+ quarantine & vaxx & Moderna\\
+ screening & vaxxed & Pfizer\\
+ distancing & vaccine & Sanofi\\
+ immunity & vaccination & Sinopharm\\
+ \hline
+\end{tabular}
+\end{table}
+
+\vspace{0.1cm}
+
+
+From these keywords, 1000 different Tweets were collected on December 6th, 2021. After scraping, the dataset was reviewed informally and we realized that a few Tweets (approximately 4\%) had been incorrectly picked up by a keyword and were unrelated to the COVID-19 pandemic. We identified these faulty data points, excluded from our analysis and collected new Tweets so as to obtain a dataset of 1000 relevant Tweets in our dataset. The original tweets and new tweets were also collected during a 3 day window. Following the scraping, we annotated the dataset according to techniques we will discuss later. Each tweet has a sentiment annotation and topic annotation. 
+
+\section{Methods}
+
+% 0.5 page. Explanation and justification for what you did. Focus on the design decisions you made NOT listed in this document that impacted your results.
+
+
+Our textual analysis is based on the semantic meaning of words used in the Tweets. We therefore filtered out common English words (also called stopwords) from our database by removing all words in the list available at this \href{https://github.com/igorbrigadir/stopwords/blob/master/en/onix.txt}{link}. 
+
+% Sentiment annotation: why we defined sentiment towards sanitary measures
+
+We constructed the dataset using a scraping script that primarily made use of the Tweepy Python library. We used a Twitter Developer account to authenticate within the Twitter API through Tweepy in order to gather a large amount of Tweets. As we are analyzing discussions related to COVID-19 on social media, we queried the Twipper Api by filtering for Tweets in the English languages and filtered out tweets that didn't contain a least one of our 27 keywords related to COVID-19. We also decided to filter out retweets as we wanted our dataset to consist of a set of unique Tweets. 
+
+However, our dataset does contain Tweet replies because it was only after we had finished the annotation process that it was mentioned on the discussion board not to include replies in our data. We still think including replies is relevant to our analysis as replies represent perfectly the nature of a discussion on social media. Incorporating them is a way to produce data that is representative of the debate on COVID-19 sanitary measures currently taking place on Twitter.  
+
+After polishing our dataset, we proceeded to the annotation part using single annotation. We decided on using single annotation instead of double annotation due to time constraints. Each Tweet was to be given a unique topic, as well as a sentiment label.
+
+During the annotation process, we realized that evaluating the sentiment of a Twitter user leads to various ambiguities. For example, a Tweet might be phrased very negatively in opposition to anti-vaccine supporters. In this case, the Tweet would have a negative sentiment, but it would express a positive position towards vaccination. 
+
+To solve this problem, we evaluated the sentiment of the user only in relation to its approval or disapproval of sanitary measures and vaccination. A value of -1 was given to users expressing disagreement over sanitary measures (e.g. lockdowns, vaccination, masks, quarantining). A value of +1 was given to users agreeing with the implementation of these measures. Finally, a value of 0 was given to Tweets which were either unrelated to COVID-19, were completely factual (originating from news articles like case counts) or which did not take position in relation to sanitary measures or vaccination. Finally, we stored our annotated dataset in a tab separated format for easy data manipulation and analysis. 
+
+
+% Other design options?
+
+[OTHER DESIGN OPTIONS?]
+
+We decided to convert hashtags to words, as they more often than not carry meaning that is helpful in perceiving the Twitter user's stance. Indeed, hashtags are used as compact representations of the principal subject of each Tweet. We were aware that including these hashtags could create biases by artificially inflating the frequency of certain words. 
+
+\section{Results}
+
+% 1 page. Share all your findings including the topics selected (and their definitions), topic characterization, and topic engagement.
+
+% Topics selected and definitions + topic characterization
+
+% Topics design validity: Was a process followed that would produce valid topics? Insufficient details should be treated the same as if something was not done.
+
+Our goal was to find between 3 and 8 topics that would be able to represent each of the subjects present in our dataset and generally characterize each of the 1000 unique tweets. Consequently, we conducted an open coding on the first 200 tweets and selected 7 different topics. Through this open coding, we were able to develop a typology that is comprehensive, well-defined and objective. Each Tweet was assigned a topic (encoded as an integer from 1 to 7) among the following list: 
+
+\begin{enumerate}
+    \item \textbf{Vaccination}: includes discussion on vaccine manufacturers and vaccination regulations, including laws regarding mandatory vaccination in certain countries. 
+    
+    \item \textbf{Variant}: includes all discussion on new viral variants (e.g. Omicron), their effect on governmental measures, their specific characteristics and their symptoms. 
+    
+    \item \textbf{Sanitary measures}: includes discussion on all governmental sanitary measures like lockdown, quarantining, social restrictions and masks. Does not include vaccination mandates (topic 1) or politically-oriented discussion on governmental measures (topic 4). 
+    
+    \item \textbf{Politics and economy}: includes all discussion on politics around the world related to COVID-19, as well as the jobs market and economic repercussions of the pandemic. Any Tweet containing mention of a particular political personality or organization (e.g. Republicans and Democrats) was included. Discussion centered around sanitary measures without emphasis on political discussion were placed in topic 3. Also includes any mention of micro-economic issues like job search in the context of the pandemic.  
+    
+    \item \textbf{Symptoms and Testing}: includes discussion on COVID-19 symptoms, screening procedures and individual testing. Does not include mentions of viral symptoms specifically linked to new variants (topic 2). 
+    
+    \item \textbf{Pandemic}: includes discussion on new cases across the globe, as well as outbreaks, deaths and statistics related to the spread of COVID-19. Includes all factual data produced by news organization. Does not include discussion on new variants (topic 2).  
+    
+    \item \textbf{Entertainment and Community}: includes discussion on the effects of the pandemic on the entertainment and sport industries, as well as the social community at large. Users relating personal experiences not linked to the above topics or other issues caused by the pandemic (such as mental health) were also included. 
+    
+\end{enumerate}
+
+%Topics validity: Are the topics appropriate to the task? Are they well-defined? Are they defined to minimize subjectivity?
+
+The typology used for topics annotation as described above is comprehensive, because
+
+Moreover, the topics typology is well-defined, because 
+
+Finally, the typology is designed to minimize the subjectivity of the annotators, because 
+
+
+% Does the annotation process give us confidence in the quality of the annotations?
+
+% Are all results requested present? Do the results make sense? Are outliers or unusual trends appropriately explained?
+
+[INTRODUCE TABLE]
+
+\begin{table}[htb]
+    \caption{Tweet sentiment towards COVID-19 sanitary measures for each topic.}
+  \centering
+\begin{tabular}{ |M{0.7cm}||M{1.2cm}|M{1cm}|M{1.1cm}|M{0.7cm}|M{1.4cm}| }
+ \hline
+ Topic & Negative & Neutral & Positive & Total & Average sentiment \\
+ \hline 
+1 & 92 & 78 & 92 & 262 & 0\\
+2 & 11 & 32 & 6 & 49 & -0.102\\
+3 & 28 & 54 & 38 & 120 & 0.083\\
+4 & 42 & 84 & 37 & 163 & -0.031\\
+5 & 8 & 27 & 12 & 47 & 0.085\\
+6 & 20 & 78 & 24 & 122 & 0.033\\
+7 & 17 & 150 & 65 & 232 & 0.207\\
+ \hline
+\end{tabular}
+\end{table}
+
+[Discuss repartition of the tweets, and the sentiment]
+
+Now each of these topics allowed us to capture one of the important aspects of the COVID-19 pandemic. The most relevant and popular subject was vaccination. Indeed, it was the most present topic in our dataset with 26\% of the total tweets. The sentiment regarding vaccination was dispersed very evenly. The positive and negative class both represented 35\% of the vaccination tweets and the neutral class represented 30\% of the tweets. 
+
+
+\begin{table*}[ht]
+\centering
+\caption{10 words with highest TF-IDF score for each topic}
+ \centering
+\begin{tabular}{ |M{2cm}|M{2cm}|M{2cm}|M{2cm}|M{2cm}|M{2cm}|M{2cm}| }
+ \hline
+ Topic 1 & Topic 2 & Topic 3 & Topic 4 & Topic 5 & Topic 6 & Topic 7\\
+ \hline 
+vaccine & omicron & passport & republican & vitamin & impact & deserve\\
+vaxxed & variant & restrictions & political & margolin & analytics & bts\\
+efficacy & mutations & sir & biden & swab & normal & vacation\\
+heart & detected & plane & trump & cleveland & cruise & season\\
+fda & omicronvariant & conservative & senate & diabetes & ship & rest\\
+people & southkorea & mandatory & republicans & myocarditis & orleans & holidays\\
+save & omicronvarient & lockdowns & businesses & suppose & visit & happy\\
+pfizer & mild & role & stocks & loss & averaging & content\\
+approved & korea & people & ready & watt & comply & throughout\\
+reduce & south & vaccination & democrats & protocol & deaths & families\\
+ \hline
+\end{tabular}
+\end{table*}
+
+
+[TOPIC CHARACTERIZATION (?)]
+
+
+% Topic engagement: 
+
+[TOPIC ENGAGEMENT]
+
+% ADD EXPLANATIONS INTRODUCING TABLE
+
+
+In order to further our analysis of dataset, we create a python script which computes the term frequency–inverse document frequency (TF-IDF) to determine the top 10 most important words for each of the topics. This script also preprocessed the tweets by removing stop words, non-alphabetical words, punctuation and external links (i.e. urls). We used the whole dataset to compute the inverse document frequency across the different topics and used the subset of tweets for each topic to compute the term frequencies. The top 10 words with highest TF-IDF score for each topic can be found in Table 2. 
+
+\section{Discussion}
+
+% 1 page. Interpret your results in terms of what they reveal about the way each candidate was being discussed and perceived. Make extensive use of your results to justify your interpretations.
+
+% Are insightful candidate-level interpretations provided? Are these grounded in results? Do the findings integrate results and prior knowledge in a sound, well-reasoned way?
+
+[RESULTS INTERPRETATION]
+
+[WEAKNESSES \& BIASES]
+
+[POSSIBLE IMPROVEMENTS]
+
+% More data, better filtering (no replies etc.), wider variety of keywords
+
+\section{Group Member Contributions}
+
+The workload was distributed among the three team members. Their respective contributions are listed here: 
+
+\  \textbf{Antoine Bonnet}: Wrote the data scraping for Twitter with Rahul and the script for computing TF-IDF scores for each category. Annotated a third of the data. Wrote the final report Data and Methods sections and computed statistics presented in the Results section.
+
+\  \textbf{Rahul Kumar}: Wrote the data scraping for Twitter with Antoine. Annotated a third of the data. Wrote the final report sections:  
+
+\  \textbf{Fabrizzio Sabelli}: Annotated a third of the data. Wrote the final report sections: Results, Discussion, Methods, Introduction  
+  
+  
+%\section{References}
+
+\end{document}
+
