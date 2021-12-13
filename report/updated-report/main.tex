@@ -2,6 +2,8 @@
 %File: formatting-instructions-latex-2022.tex
 %release 2022.1
 \documentclass[letterpaper]{article} % DO NOT CHANGE THIS
+\usepackage{graphicx}
+\graphicspath{ {../../data/} } %might need to change this if you're compiling on overleaf!
 \usepackage{aaai22}  % DO NOT CHANGE THIS
 \usepackage{times}  % DO NOT CHANGE THIS
 \usepackage{helvet}  % DO NOT CHANGE THIS
@@ -151,7 +153,10 @@ After the annotation process, textual analysis was performed on Tweets grouped b
 
 % 3. Results and findings
 
-[SUMMARY OF FINDINGS/RESULTS]
+We found that most tweets were factual in nature and were providing
+statistics and/or information around the pandemic. The most controversial topic
+by far was tweets involving discussion on vaccinations and vaccine regulations.
+Overall, there is a positive response by users towards measures taken to combat the pandemic.
 
 \section{Data}
 
@@ -196,20 +201,37 @@ Our textual analysis is based on the semantic meaning of words used in the Tweet
 
 % Sentiment annotation: why we defined sentiment towards sanitary measures
 
-We constructed the dataset using a scraping script that primarily made use of the Tweepy Python library \cite{roesslein2020tweepy}. We used a Twitter Developer account to authenticate within the Twitter API through Tweepy in order to gather a large amount of Tweets. As we are analyzing discussions related to COVID-19 on social media, we queried the Twipper Api by filtering for Tweets in the English languages and filtered out tweets that didn't contain a least one of our 27 keywords related to COVID-19. We also decided to filter out retweets as we wanted our dataset to consist of a set of unique Tweets. 
+We constructed the dataset using a scraping script that primarily made use of
+the Tweepy Python library \cite{roesslein2020tweepy}. We used a Twitter
+Developer account to authenticate within the Twitter API through Tweepy in order
+to gather a large amount of Tweets. As we are analyzing discussions related to
+COVID-19 on social media, we queried the Twipper Api by filtering for Tweets in
+the English languages and filtered out tweets that didn't contain a least one of
+our 27 keywords related to COVID-19. We had to fine tune
+the keywords by trial and error initially. For example, we were initially
+grabbing a bunch of tweets about British Prime Minister Boris Johnson while
+looking for tweets pertaining to the vaccine Johnson \& Johnson.
+We also decided to filter out retweets as
+we wanted our dataset to consist of a set of unique Tweets. 
 
-However, our dataset does contain Tweet replies because it was only after we had finished the annotation process that it was mentioned on the discussion board not to include replies in our data. We still think including replies is relevant to our analysis as replies represent perfectly the nature of a discussion on social media. Incorporating them is a way to produce data that is representative of the debate on COVID-19 sanitary measures currently taking place on Twitter.  
+However, our dataset does contain Tweet replies because it was only after we had
+finished the annotation process that it was mentioned on the discussion board
+not to include replies in our data. We still think including replies is relevant
+to our analysis as replies represent perfectly the nature of a discussion on
+social media. Incorporating them is a way to produce data that is representative
+of the debate on COVID-19 sanitary measures currently taking place on Twitter.
+
+Our initial goal was to collect tweets only from Canada but we soon realized
+that the subset of tweets that are geotagged with a location is minimal. Most
+tweets don't have a location attached to them and so this would be an inaccurate
+description of most interactions in Canada. So we allowed tweets from all over
+the world, as long as they are in English.
 
 After polishing our dataset, we proceeded to the annotation part using single annotation. We decided on using single annotation instead of double annotation due to time constraints. Each Tweet was to be given a unique topic, as well as a sentiment label.
 
 During the annotation process, we realized that evaluating the sentiment of a Twitter user leads to various ambiguities. For example, a Tweet might be phrased very negatively in opposition to anti-vaccine supporters. In this case, the Tweet would have a negative sentiment, but it would express a positive position towards vaccination. 
 
 To solve this problem, we evaluated the sentiment of the user only in relation to its approval or disapproval of sanitary measures and vaccination. A value of -1 was given to users expressing disagreement over sanitary measures (e.g. lockdowns, vaccination, masks, quarantining). A value of +1 was given to users agreeing with the implementation of these measures. Finally, a value of 0 was given to Tweets which were either unrelated to COVID-19, were completely factual (originating from news articles like case counts) or which did not take position in relation to sanitary measures or vaccination. Finally, we stored our annotated dataset in a tab separated format for easy data manipulation and analysis. 
-
-
-% Other design options?
-
-[OTHER DESIGN OPTIONS?]
 
 We decided to convert hashtags to words, as they more often than not carry meaning that is helpful in perceiving the Twitter user's stance. Indeed, hashtags are used as compact representations of the principal subject of each Tweet. We were aware that including these hashtags could create biases by artificially inflating the frequency of certain words, but we chose to include them nonetheless. 
 
@@ -305,11 +327,26 @@ These results are representative of our expectations. Indeed, Twitter is a socia
 
 \section{Discussion}
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.9\columnwidth]{fig_topics} % Reduce the figure size so that it is slightly narrower than the column. Don't use precise values for figure width.This setup will avoid overfull boxes.
+\caption{Topics split}.
+\label{fig_topics}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.9\columnwidth]{fig1} % Reduce the figure size so that it is slightly narrower than the column. Don't use precise values for figure width.This setup will avoid overfull boxes.
+\caption{Most controversial topic}.
+\label{fig_cont}
+\end{figure}
+
 % 1 page. Interpret your results in terms of what they reveal about the way each candidate was being discussed and perceived. Make extensive use of your results to justify your interpretations.
 
 % Are insightful candidate-level interpretations provided? Are these grounded in results? Do the findings integrate results and prior knowledge in a sound, well-reasoned way?
 
-As described in the results section, some topics had a much larger share of the total tweets than others. Indeed, the vaccination and entertainment and community were clear leaders in total tweets and almost represent half the tweets in the dataset with 49.5\% of the total share. This was to be expected as vaccination is the most controversial aspect of the COVID-19 pandemic and as social media users will use twitter to discuss the effects of the pandemic on their community and to discuss different aspects of the entertainment industry. 
+Some topics had a much larger share of the total tweets than others. As seen in
+Figure \ref{fig_topics}, the vaccination and entertainment and community were clear leaders in total tweets and almost represent half the tweets in the dataset with 49.5\% of the total share. This was to be expected as vaccination is the most controversial aspect of the COVID-19 pandemic and as social media users will use twitter to discuss the effects of the pandemic on their community and to discuss different aspects of the entertainment industry. 
 
 Now three topics were in the middle of the pact: sanitary measures, politics and economy and pandemic. Sanitary measures and pandemic both represented 12.1\% and 12.3\% of the dataset respectively and politics and economy tweets represented 16.4\% of it. Thus, we can infer that these topics were relevant but not the most discussed at the time of the scraping. A reason behind this may be that these topics are more local than global. Indeed, these three topics characterize aspects of the COVID-19 pandemic that are more regional issues than global issues. A smaller subset of twitter users would then interact with them which consequently lowers their representation on the platform. 
 
@@ -317,7 +354,8 @@ Two topics were much less present in the dataset: variant and symptoms and testi
 
 Now the overall sentiment distribution of the tweets in the dataset is the following: 21.9\% negative, 50.6\% neutral and 27.5\% positive. This clearly shows that most tweets are factual, no matter the topic. A major reason behind this may be the short and concise nature of tweets which allows for information to be divulged to the large masses very rapidly. Consequently, tweets may often have been used to give updates on the current situation related to each one of the topics. 
 
-For the vaccination topic, the distribution of the sentiment was very equal. Indeed, the proportion of tweets with negative sentiment is identical to the proportion of tweets with positive sentiment. Consequently, this gave an average sentiment of 0 which demonstrates that there were as many people for and against vaccination. The top words for this topic were all words related to vaccines, their efficacy, the companies creating them and regulating them. The word heart was also present. We can thus interpret that the discussions related to vaccination on Twitter were mainly about the efficacy of the vaccines and their side-effects such as heart diseases. 
+For the vaccination topic, the distribution of the sentiment was very equal, as
+seen in \ref{fig_cont}. Indeed, the proportion of tweets with negative sentiment is identical to the proportion of tweets with positive sentiment. Consequently, this gave an average sentiment of 0 which demonstrates that there were as many people for and against vaccination. The top words for this topic were all words related to vaccines, their efficacy, the companies creating them and regulating them. The word heart was also present. We can thus interpret that the discussions related to vaccination on Twitter were mainly about the efficacy of the vaccines and their side-effects such as heart diseases. 
 
 The variant topic had an average sentiment of -0.1 which indicates a very slight negativity towards variants in twitter discussions. The top word for the topic is evidently omicron as this is most recent COVID-19 variant to emerge. Also, 3 words in the top 10 of topic 2 are directly related to South Korea. Thus, we can interpret that the discussions on twitter concerning variants have mostly been about the emergence of the Omicron variant in South Korea and the world. Combined with the slight negative average sentiment, we could interpret these discussions as fear towards a global spike in Omicron cases. 
 
@@ -335,7 +373,7 @@ Now our analysis is unfortunately not bulletproof. Indeed, a major weakness is t
 
 Nevertheless, possible improvements we could integrate in the future to reduce these weaknesses could evidently be to use double annotation and also exclude replies from our parsing script. Furthermore, we could also gather a larger dataset which could help reduce the biases present in our data as the underlying distribution would converge to the true distribution according to the Law of Large Numbers. Finally, one aspect that would improve immensely that quality of this analysis is the use of deep learning algorithms. Indeed, we could train a simple bag of words model and transfer learning to then determine which key words would fit best for our query
 
-[POSSIBLE IMPROVEMENTS]
+
 
 % More data, better filtering (no replies etc.), wider variety of keywords
 
@@ -345,7 +383,9 @@ The workload was distributed among the three team members. Their respective cont
 
 \  \textbf{Antoine Bonnet}: Wrote the data scraping for Twitter with Rahul and the script for computing TF-IDF scores for each category. Annotated a third of the data. Wrote the final report Data and Methods sections and computed statistics presented in the Results section.
 
-\  \textbf{Rahul Kumar}: Wrote the data scraping for Twitter with Antoine. Annotated a third of the data. Wrote the final report sections:  
+\  \textbf{Rahul Kumar}: Wrote the data scraping for Twitter with Antoine.
+Annotated a third of the data. Wrote a small portion of final report sections
+(with Fabrizzio):  Introduction, Methods.
 
 \  \textbf{Fabrizzio Sabelli}: Annotated a third of the data. Wrote the final report sections: Results, Discussion, Methods.
   

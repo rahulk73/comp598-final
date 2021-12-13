@@ -11,9 +11,9 @@ topics = {
     2:"Variant",
     3:"Sanitary Measures",
     4:"Politics and Economy",
-    5:"Symptoms and Testing",
+    5:"Symptoms \n and Testing",
     6:"Pandemic Stats",
-    7:"Entertainment and Community",
+    7:"Entertainment \n and Community",
     8:"Unrelated",
 }
 colours = {
@@ -36,6 +36,15 @@ def sentiment_all():
     df['sentiment'].value_counts().plot.pie(autopct='%1.1f%%', colors=[colours[v] for v in df['sentiment'].value_counts().keys()])
     plt.title("All Tweets", bbox={'facecolor':'0.8', 'pad':5})
     plt.savefig(DATA.joinpath('fig_all.png'))
+    plt.close()
+
+def topics_all():
+    df = pd.read_csv(DATA.joinpath('tweet_data.tsv'), sep='\t', header=0)
+    df['topics'] = df['topics'].map(lambda x : topics[x])
+    explode = (0.2, 0.2, 0, 0, 0, 0, 0)
+    df['topics'].value_counts().plot.pie(autopct='%1.1f%%', ylabel="", explode=explode, shadow=True)
+    plt.title("Topics", bbox={'facecolor':'0.8', 'pad':5})
+    plt.savefig(DATA.joinpath('fig_topics.png'))
     plt.close()
 
 def cloud():
@@ -77,5 +86,5 @@ def cloud():
 
     
 if __name__ == '__main__':
-    cloud()
+    topics_all()
     
