@@ -16,17 +16,23 @@ topics = {
     7:"Entertainment \n and Community",
     8:"Unrelated",
 }
+sentiment = {
+    1 : "Positive response",
+    -1 : "Negative Response",
+    0 : "Neutral"
+}
 colours = {
-    -1: 'C2',
-    0: 'C1',
-    1: 'C0',
+    "Negative Response": 'C2',
+    "Neutral": 'C1',
+    "Positive response": 'C0',
 }
 
 def sentiment_group():
     df = pd.read_csv(DATA.joinpath('tweet_data.tsv'), sep='\t', header=0)
     for i in range(1,8):
         df_aux = df[df['topics']==i]
-        df_aux['sentiment'].value_counts().plot.pie(autopct='%1.1f%%', colors=[colours[v] for v in df_aux['sentiment'].value_counts().keys()])
+        df_aux['sentiment'] = df_aux['sentiment'].map(lambda x : sentiment[x])
+        df_aux['sentiment'].value_counts().plot.pie(autopct='%1.1f%%', ylabel="", colors=[colours[v] for v in df_aux['sentiment'].value_counts().keys()],)
         plt.title(topics[i], bbox={'facecolor':'0.8', 'pad':5})
         plt.savefig(DATA.joinpath('fig' + str(i) + '.png'))
         plt.close()
@@ -86,5 +92,5 @@ def cloud():
 
     
 if __name__ == '__main__':
-    topics_all()
+    sentiment_group()
     
